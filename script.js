@@ -1,31 +1,44 @@
+// Scroll event listener to add/remove the 'scrolled' class to the header
+window.addEventListener("scroll", function () {
+    const header = document.querySelector(".header-section");
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+
 $(".message a").click(function () {
     $("form").animate({
         height: "toggle",
         opacity: "toggle"
-    }, "slow")
-})
+    }, "slow");
+});
 
-const FName = document.getElementById("fname")
-const LName = document.getElementById("lname")
-const Phone = document.getElementById("phone")
-const Address = document.getElementById("address")
-const Email = document.getElementById("email")
-const Pass = document.getElementById("password")
-const CPass = document.getElementById("cpassword")
 
-const FNameError = document.getElementById("error1")
-const LNameError = document.getElementById("error2")
-const PhoneError = document.getElementById("error3")
-const AddressError = document.getElementById("error4")
-const EmailError = document.getElementById("error5")
-const PassError = document.getElementById("error6")
-const CPassError = document.getElementById("error7")
 
-const Strength = document.getElementById("strength")
-const RegisterForm = document.getElementById("register-form")
+const FName = document.getElementById("fname");
+const LName = document.getElementById("lname");
+const Phone = document.getElementById("phone");
+const Address = document.getElementById("address");
+const Email = document.getElementById("email");
+const Pass = document.getElementById("password");
+const CPass = document.getElementById("cpassword");
+
+const FNameError = document.getElementById("error1");
+const LNameError = document.getElementById("error2");
+const PhoneError = document.getElementById("error3");
+const AddressError = document.getElementById("error4");
+const EmailError = document.getElementById("error5");
+const PassError = document.getElementById("error6");
+const CPassError = document.getElementById("error7");
+
+const Strength = document.getElementById("strength");
+const RegisterForm = document.getElementById("register-form");
 
 const indicator = document.querySelector(".indicator");
-const input = document.getElementById("password")
+const input = document.getElementById("password");
 const weak = document.querySelector(".weak");
 const medium = document.querySelector(".medium");
 const strong = document.querySelector(".strong");
@@ -46,7 +59,7 @@ function trigger() {
         if (no === 1) {
             weak.classList.add("active");
             text.style.display = "block";
-            text.textContent = "Your password is too week";
+            text.textContent = "Your password is too weak";
             text.classList.add("weak");
         }
         if (no === 2) {
@@ -89,40 +102,40 @@ function validateName(nameText) {
 }
 
 Pass.addEventListener('change', () => {
-    console.log("Yo")
-})
+    console.log("Password validation triggered");
+});
 
 RegisterForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-    FNameError.innerHTML = ""
-    LNameError.innerHTML = ""
-    PhoneError.innerHTML = ""
-    AddressError.innerHTML = ""
-    EmailError.innerHTML = ""
-    PassError.innerHTML = ""
-    CPassError.innerHTML = ""
+    e.preventDefault();
+    FNameError.innerHTML = "";
+    LNameError.innerHTML = "";
+    PhoneError.innerHTML = "";
+    AddressError.innerHTML = "";
+    EmailError.innerHTML = "";
+    PassError.innerHTML = "";
+    CPassError.innerHTML = "";
 
     if (!validateName(FName.value)) {
-        FNameError.innerText = "Please enter a valid first name."
+        FNameError.innerText = "Please enter a valid first name.";
     }
 
     if (!validateName(LName.value)) {
-        LNameError.innerText = "Please enter a valid last name."
+        LNameError.innerText = "Please enter a valid last name.";
     }
 
     if (!validatePhone(Phone.value)) {
-        PhoneError.innerText = "Please enter a valid phone number."
+        PhoneError.innerText = "Please enter a valid phone number.";
     }
 
     if (!validateEmail(Email.value)) {
-        EmailError.innerText = "Please enter a valid email."
+        EmailError.innerText = "Please enter a valid email.";
     }
 
     if (Pass.value.length < 8) {
-        PassError.innerHTML = "Password must be at least 8 digits."
+        PassError.innerHTML = "Password must be at least 8 characters.";
     } else if (Pass.value !== CPass.value) {
-        CPassError.innerHTML = "Password is not matching."
-        Pass.value = ""
-        CPass.value = ""
+        CPassError.innerHTML = "Passwords do not match.";
+        Pass.value = "";
+        CPass.value = "";
     }
-})
+});

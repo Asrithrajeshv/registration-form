@@ -11,7 +11,7 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: "Roboto", sans-serif;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .parent-div {
@@ -20,37 +20,71 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding-top: 20px; 
+    padding-top: 120px;
+    padding-bottom: 60px; /* Extra padding for footer */
 }
 
+/* Sticky Header */
 .header-section {
-    background: rgba(0, 0, 0, 0.7); 
-    color: white; 
-    padding: 30px 20px; 
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: white;
+    padding: 30px 20px;
     width: 100%;
     text-align: center;
-    position: relative; 
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensures it stays on top */
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease; /* Smooth animation for header */
+}
+
+/* Smaller header when scrolling */
+.header-section.scrolled {
+    padding: 15px 20px; /* Reduce padding when scrolling */
+    background: rgba(0, 0, 0, 0.9); /* Darker background on scroll */
 }
 
 .header-text {
-    font-size: 2rem; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     color: #FFFFFF;
     margin: 0;
-    text-align: center; 
+    transition: font-size 0.5s ease; /* Animate font size */
 }
 
+.header-section.scrolled .header-text {
+    font-size: 1.5rem; /* Smaller text on scroll */
+}
 
+/* Logo styling */
 .logo {
     position: absolute;
-    top: 30px;
+    top: 10px;
     right: 20px;
     width: 60px;
     height: auto;
+    transition: width 0.5s ease; /* Animate logo size */
+}
+
+.header-section.scrolled .logo {
+    width: 40px; /* Smaller logo on scroll */
+}
+
+/* Fixed Footer */
+.footer {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .login-signup-holder {
@@ -59,8 +93,8 @@ body {
     border-radius: 15px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 400px; 
-    margin: 0 20px; 
+    max-width: 400px;
+    margin: 0 20px;
     animation: slide-in 0.8s ease-in-out forwards;
     opacity: 0;
     transform: translateX(100%);
@@ -139,14 +173,4 @@ body {
     color: #ff4757;
     font-size: 0.9rem;
     margin-bottom: 10px;
-}
-
-.footer {
-    margin-top: 20px;
-    text-align: center;
-    font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';
-    padding: 10px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); 
-    color: white;
 }
